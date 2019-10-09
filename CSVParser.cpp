@@ -24,6 +24,8 @@ CSVParser::RESULT CSVParser::ReadFile(const std::string &filePath) {
 // put csvRow into mData , use pushback
 //clear csvRow .clear
 
+  cout << "ReadFile function is called and the filepath is ||" << filePath << "||"<< endl;
+
 }
 
 /* Gets an entry in the CSV data given the row and column index */	
@@ -32,17 +34,19 @@ string CSVParser::GetEntry(int rowIndex, int colIndex) {
 //condition to row size and mdsta size , reverse
 // vector .at()
 //   
+  cout << "Get Entry function is called and here is rowIndex " << rowIndex << "and colIndex is "<< colIndex << endl;
 }
 
 /* Removes all data stored */
 void CSVParser::ClearData(void) {
   //vector clear function
-  mData.clear();
+  cout << "Clear Data function is called" << endl;
+  // mData.clear();
 }
 
 
-int main()
-{
-  // ReadFile()
-  return 0;
-}
+// int main()
+// {
+//   // ReadFile()
+//   return 0;
+// }
