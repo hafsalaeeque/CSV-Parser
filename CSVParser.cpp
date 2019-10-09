@@ -23,9 +23,25 @@ CSVParser::RESULT CSVParser::ReadFile(const std::string &filePath) {
 // while loop to read all lines http://www.cplusplus.com/forum/beginner/11304/ and put into csvRow
 // put csvRow into mData , use pushback
 //clear csvRow .clear
-
   cout << "ReadFile function is called and the filepath is ||" << filePath << "||"<< endl;
+  //file pointer
+  ifstream fin;
+  cout << "File pointer created, opening file" << endl << endl ;
+  fin.open(filePath);
+  string line;
+  cout << "File opened" << endl;
+  if (fin.is_open()){
+    while (getline(fin, line))
+    {
+      cout<< line << endl;
+    }
 
+    cout<< "closing file after looping" <<endl;
+    fin.close();
+  }
+  else{
+    cout <<"file not open" <<endl;
+  }
 }
 
 /* Gets an entry in the CSV data given the row and column index */	
