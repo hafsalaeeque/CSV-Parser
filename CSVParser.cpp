@@ -11,10 +11,6 @@ using namespace std;
 //g++ CSVParser.cpp main.cpp -o main.exe
 //./main.exe
 
-// std::vector<std::string> CSVParser::CSVRow;
-// std::vector CSVParser::CSVData;
-// std::vector<std::vector<std::string>> mData;
-
 /* Reads the CSV contents of a file, writes to result and return OK/FAIL */	
 CSVParser::RESULT CSVParser::ReadFile(const std::string &filePath) {
 //use fstream to open and access the file , before that create fstream object
@@ -35,8 +31,7 @@ CSVParser::RESULT CSVParser::ReadFile(const std::string &filePath) {
   cout << "File opened" << endl << endl;
   if (fin.is_open()){
     /* read the entire line*/
-    while (getline(fin, line))
-    {
+    while (getline(fin, line)){
       cout<< line << endl;
       
       std::stringstream ss(line);
@@ -67,6 +62,8 @@ CSVParser::RESULT CSVParser::ReadFile(const std::string &filePath) {
   }
 }
 
+cout << "Size of csvData outside of fn is: " << csvData.size() << endl;      
+      
 /* Gets an entry in the CSV data given the row and column index */	
 string CSVParser::GetEntry(int rowIndex, int colIndex) {
 //use mdata, works like an array, more like 2d array
@@ -80,5 +77,5 @@ string CSVParser::GetEntry(int rowIndex, int colIndex) {
 void CSVParser::ClearData(void) {
   //vector clear function
   cout << "Clear Data function is called" << endl;
-  // mData.clear();
+  mData.clear();
 }
