@@ -63,7 +63,6 @@ CSVParser::RESULT CSVParser::ReadFile(const std::string &filePath) {
   else{
     cout <<"file not open" <<endl;
     return RESULT::FAIL;
-
   }
 
 }
@@ -76,8 +75,6 @@ string CSVParser::GetEntry(int rowIndex, int colIndex) {
 //  
 
   // cout << mData.size();
-  cout << "Get Entry function is called and here is rowIndex " << rowIndex << " and colIndex is "<< colIndex << endl;
-
   return mData.at(rowIndex).at(colIndex);
 }
 
