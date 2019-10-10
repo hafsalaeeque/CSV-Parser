@@ -12,6 +12,7 @@ int main(){
     parser.ReadFile(csvName);
     cout << "calling GetEntry function" << endl;
     parser.GetEntry(1,2);
+    parser.ClearData();
     
 
     return 0;
