@@ -5,6 +5,7 @@ Brief Description: A source file parsing CSV files
 #include "CSVParser.h"
 #include <iostream>
 #include <fstream>
+#include <sstream>
 using namespace std;
 
 //g++ CSVParser.cpp main.cpp -o main.exe
@@ -26,14 +27,36 @@ CSVParser::RESULT CSVParser::ReadFile(const std::string &filePath) {
   cout << "ReadFile function is called and the filepath is ||" << filePath << "||"<< endl;
   //file pointer
   ifstream fin;
+  //CSV data 
+  CSVData csvData;
   cout << "File pointer created, opening file" << endl << endl ;
   fin.open(filePath);
   string line;
-  cout << "File opened" << endl;
+  cout << "File opened" << endl << endl;
   if (fin.is_open()){
+    /* read the entire line*/
     while (getline(fin, line))
     {
       cout<< line << endl;
+      
+      std::stringstream ss(line);
+      string data;
+      int id;
+      CSVRow csvRow;
+      /* separate by comma and store in variable*/
+      while(getline(ss, data, ',')){
+        csvRow.push_back(data); 
+        cout << "Data "<< data << " is inserted in csvRow" << endl;
+        cout << "Size of csvRow is: " << csvRow.size() << endl;      
+        if(stoi(csvRow[0])){
+          id = stoi(csvRow[0]);
+          cout << "Id is " << id << endl;
+        }
+      }
+      cout << "adding row to data" << endl;
+      csvData.push_back(csvRow);
+      cout << "Size of csvData is: " << csvData.size() << endl;      
+         
     }
 
     cout<< "closing file after looping" <<endl;
@@ -50,7 +73,7 @@ string CSVParser::GetEntry(int rowIndex, int colIndex) {
 //condition to row size and mdsta size , reverse
 // vector .at()
 //   
-  cout << "Get Entry function is called and here is rowIndex " << rowIndex << "and colIndex is "<< colIndex << endl;
+  cout << "Get Entry function is called and here is rowIndex " << rowIndex << " and colIndex is "<< colIndex << endl;
 }
 
 /* Removes all data stored */
@@ -59,10 +82,3 @@ void CSVParser::ClearData(void) {
   cout << "Clear Data function is called" << endl;
   // mData.clear();
 }
-
-
-// int main()
-// {
-//   // ReadFile()
-//   return 0;
-// }
