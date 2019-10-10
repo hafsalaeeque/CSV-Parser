@@ -10,7 +10,9 @@ int main(){
     cout << "object created " << endl;
     cout << "calling ReadFile function" << endl;
     parser.ReadFile(csvName);
-
+    cout << "calling GetEntry function" << endl;
+    parser.GetEntry(1,2);
+    
 
     return 0;
 }

@@ -17,13 +17,14 @@ CSVParser::RESULT CSVParser::ReadFile(const std::string &filePath) {
 //use object to access function of fstream
 // .open to open the file 
 // use string fn, getline, to read the lines. 3 params, to store line, to store word word, delim
-// while loop to read all lines http://www.cplusplus.com/forum/beginner/11304/ and put into csvRow
+// while loop to read all lines http://www.cplusplus.com/forum/beginner/11304/
+//  and put into csvRow
 // put csvRow into mData , use pushback
 //clear csvRow .clear
-
   cout << "ReadFile function is called and the filepath is ||" << filePath << "||"<< endl;
   //file pointer
   ifstream fin;
+  //CSV data 
   cout << "File pointer created, opening file" << endl << endl ;
   fin.open(filePath);
   string line;
@@ -49,21 +50,24 @@ CSVParser::RESULT CSVParser::ReadFile(const std::string &filePath) {
       }
       cout << "adding row to data" << endl;
       mData.push_back(csvRow);
-      csvRow.clear();
-      cout << "Size of csvData is: " << mData.size() << endl;      
+      cout << "Size of mData is: " << mData.size() << endl;      
          
     }
 
     cout<< "closing file after looping" <<endl;
     fin.close();
+
     return RESULT::OK;
+
   }
   else{
     cout <<"file not open" <<endl;
     return RESULT::FAIL;
+
   }
+
 }
-     
+      
 /* Gets an entry in the CSV data given the row and column index */	
 string CSVParser::GetEntry(int rowIndex, int colIndex) {
 //use mdata, works like an array, more like 2d array
@@ -71,15 +75,15 @@ string CSVParser::GetEntry(int rowIndex, int colIndex) {
 // vector .at()
 //  
 
+  // cout << mData.size();
   cout << "Get Entry function is called and here is rowIndex " << rowIndex << " and colIndex is "<< colIndex << endl;
-  cout << "Size of csvData is: " << mData.size() << endl;
-  cout << mData.at(rowIndex).at(colIndex) << endl;    
-  // return mData.at(rowIndex).at(colIndex);   
+
+  return mData.at(rowIndex).at(colIndex);
 }
 
 /* Removes all data stored */
 void CSVParser::ClearData(void) {
   //vector clear function
   cout << "Clear Data function is called" << endl;
-  // mData.clear();
+  mData.clear();
 }
